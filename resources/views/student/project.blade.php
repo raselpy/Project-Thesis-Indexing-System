@@ -22,6 +22,7 @@
                   <tbody>
                     @foreach($files as $file)
                         @if($file->type=="project") 
+                        @if($file->status==1)
 
                     <tr>
                       <th scope="row">{{$file->name}}</th>
@@ -43,6 +44,7 @@
                       <td>{{$file->supervisor_name}}</td>
                       <td><a href="{{url('project/details/' . $file->id)}}">More</a></td>
                     </tr>
+                    @endif
                     @endif
                 @endforeach
                     

@@ -36,6 +36,14 @@ class AdminController extends Controller
         $idea->save();
         return redirect()->back(); 
     }
+
+    public function file_delete($id){
+        $idea = ProjectFiles::find($id);
+        $idea->status = 0;
+        $idea->save();
+        return redirect()->back(); 
+    }
+    
     
     public function student(){
         $users = User::paginate(8);

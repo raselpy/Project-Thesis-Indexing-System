@@ -58,6 +58,7 @@ Route::post('/idea/store','IdeaSubmitController@store_idea')->name('store_idea')
 Route::get('/admin/index','AdminController@index')->name('admin');
 Route::get('/admin/idea','AdminController@idea')->name('admin.idea');
 Route::get('/idea/delete/{id}','AdminController@idea_delete')->name('idea.delete');
+Route::get('/file/delete/{id}','AdminController@file_delete')->name('file.delete');
 Route::get('/admin/student','AdminController@student')->name('admin.student');
 Route::get('/admin/teacher','AdminController@teacher')->name('admin.teacher');
 Route::get('/admin/delete/{id}','AdminController@delete')->name('admin.delete');

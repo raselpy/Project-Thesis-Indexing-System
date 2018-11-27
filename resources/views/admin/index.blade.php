@@ -42,6 +42,7 @@
                   </thead>
                   <tbody>
                     @foreach($files as $file)
+                    @if($file->status==1)
 
                     <tr>
                       <th scope="row">
@@ -99,7 +100,14 @@
                             
                       </td>
 
+                      <td>
+                        <td class="center aligned">
+                        <a href="{{route('file.delete',$idea->id)}}">Delete</a>
+                      </td>
+                      </td>
+
                     </tr>
+                    @endif
                 @endforeach
                     
                   </tbody>

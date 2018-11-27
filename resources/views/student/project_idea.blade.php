@@ -6,6 +6,7 @@
             <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">Project Idea List</h2>
            @foreach($ideas as $idea)
                 @if($idea->type=="project")
+                @if($idea->status==1)
 
             <div class="ui" style="margin-bottom: 20px">
                 <div class="ui ui tall stacked segment">
@@ -37,6 +38,7 @@
                 </div>
             </div>
 
+            @endif
             @endif
                 @endforeach  
 
