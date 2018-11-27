@@ -27,7 +27,8 @@ class AdminController extends Controller
 
     public function idea(){
         $ideas = Idea::paginate(8);
-        return view('admin.idea',compact('ideas'));
+         $users = User::all();
+        return view('admin.idea',compact('ideas','users'));
     }
     
     public function student(){
@@ -36,7 +37,7 @@ class AdminController extends Controller
     }
 
     public function teacher(){
-        $users = User::paginate(8);
+        $users = User::paginate(8);     
         return view('admin.teacher',compact('users'));
     }
 

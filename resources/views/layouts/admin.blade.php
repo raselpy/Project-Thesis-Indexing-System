@@ -78,7 +78,7 @@
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav" style="width: 200px !important;">
         
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="users icon"></i>
             <span>Users</span>
@@ -88,8 +88,8 @@
             <a class="dropdown-item" href="{{route('admin.student')}}">Students</a>
             <a class="dropdown-item" href="{{route('admin.teacher')}}">Teachers</a>
           </div>
-        </li>
-         <!-- @yield('user') -->
+        </li> -->
+         @yield('user')
         <li class="nav-item">
           <a class="nav-link" href="{{route('admin.idea')}}">
             <i class="far fa-lightbulb"></i>

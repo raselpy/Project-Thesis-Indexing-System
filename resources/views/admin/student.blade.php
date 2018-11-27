@@ -1,5 +1,23 @@
 @extends('layouts.admin')
 
+@section('user')
+   @foreach($users as $user)
+       @if($user->role==3)
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="users icon"></i>
+                <span>Users</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <h6 class="dropdown-header">Users:</h6>
+                <a class="dropdown-item" href="{{route('admin.student')}}">Students</a>
+                <a class="dropdown-item" href="{{route('admin.teacher')}}">Teachers</a>
+              </div>
+         </li>
+       @endif
+    @endforeach    
+@endsection
+
 @section('content')
     <div class="container" style="user-select: none;margin-left:95px;">
         <div class="row justify-content-center">

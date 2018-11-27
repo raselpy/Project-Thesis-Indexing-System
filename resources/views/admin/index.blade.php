@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-<!-- @section('user')
+@section('user')
    @foreach($users as $user)
        @if($user->role==3)
            <li class="nav-item dropdown">
@@ -16,7 +16,7 @@
          </li>
        @endif
     @endforeach    
-@endsection -->
+@endsection
 
 
 @section('content')
@@ -37,6 +37,7 @@
                       <th scope="col">Thesis supervisor</th>
                       <th scope="col">Doc</th>
                       <th scope="col">Source File</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
