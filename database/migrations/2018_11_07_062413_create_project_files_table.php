@@ -29,6 +29,7 @@ class CreateProjectFilesTable extends Migration
             $table->string('image');
             $table->string('path');
             $table->integer('view_count')->default(0);
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

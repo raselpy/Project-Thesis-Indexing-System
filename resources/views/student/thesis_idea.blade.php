@@ -8,7 +8,7 @@
             <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">Thesis Idea List</h2>
            @foreach($ideas as $idea)
                 @if($idea->type=="thesis")
-
+                    @if($idea->status==1)
             <div class="ui" style="margin-bottom: 20px">
                 <div class="ui ui tall stacked segment">
                     <div class="ui items">
@@ -39,6 +39,7 @@
                 </div>
             </div>
 
+            @endif
             @endif
                 @endforeach  
 

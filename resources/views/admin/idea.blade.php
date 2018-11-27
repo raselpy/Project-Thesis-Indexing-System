@@ -38,6 +38,8 @@
                   </thead>
                   <tbody>
                     @foreach($ideas as $idea)
+
+                    @if($idea->status==1)
                         
 
                     <tr>
@@ -66,10 +68,13 @@
 				             <a class="ui button" href="{{url('thesis_idea/details/' . $idea->id)}}">View Idea Detail</a>
 				         @endif  
                       </td>
-                      <td>{{$idea->supervisor_name}}</td>
+                      <td class="center aligned">
+                        <a href="{{route('idea.delete',$idea->id)}}">Delete</a>
+                      </td>
                       
 
                     </tr>
+                    @endif
                 @endforeach
                     
                   </tbody>

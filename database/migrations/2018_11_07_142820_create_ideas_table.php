@@ -20,6 +20,7 @@ class CreateIdeasTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->string('required_technology');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

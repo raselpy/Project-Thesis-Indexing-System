@@ -41,6 +41,7 @@ Route::get('/idea/thesis','ThesisIdeaController@index')->name('idea_thesis');
 Route::get('/thesis_idea/details/{id}','ThesisIdeaController@detail')->name('thesis_idea_detail');
 
 
+
 Route::get('/category','CategoryController@index')->name('category');
 Route::post('/category/submit','CategoryController@submit_category')->name('submit_category');
 
@@ -56,6 +57,7 @@ Route::post('/idea/store','IdeaSubmitController@store_idea')->name('store_idea')
 
 Route::get('/admin/index','AdminController@index')->name('admin');
 Route::get('/admin/idea','AdminController@idea')->name('admin.idea');
+Route::get('/idea/delete/{id}','AdminController@idea_delete')->name('idea.delete');
 Route::get('/admin/student','AdminController@student')->name('admin.student');
 Route::get('/admin/teacher','AdminController@teacher')->name('admin.teacher');
 Route::get('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
