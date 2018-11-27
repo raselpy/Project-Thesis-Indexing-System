@@ -18,5 +18,10 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.5.0",
+        "semantic-ui": "^2.4.2",
+        "summernote": "^0.8.10"
     }
 }
