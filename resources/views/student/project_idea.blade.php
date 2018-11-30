@@ -42,9 +42,7 @@
             @endif
                 @endforeach  
 
-                <div>
-                    {{$ideas->links()}}
-                </div>
+                
 
         </div>
     </div>

@@ -52,13 +52,32 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|email_domain:' . $data['email'] . '|max:255|unique:users',
-            // 'email' => 'required',
-            'password' => 'required|string|min:6|confirmed',
-            'role' => 'required',
-        ]);
+
+        if ($data["role"] == 2) {
+
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => ['required', 'regex:/^(([a-z0-9]+([_\.\-]{1})+(swe)){1}([@]){1}(diu.edu.bd|daffodilvarsity.edu.bd){1})/', 
+                'max:255', 'unique:users'],
+                'password' => 'required|string|min:6|confirmed',
+                'role' => 'required',
+            ]);
+
+        } 
+        else {
+
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|email_domain:' . $data['email'] . '|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'role' => 'required',
+            ]);
+
+        }
+        
+        
+
+        
     }
 
     /**
@@ -74,7 +93,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role' => $data['role'],
+            'role' => 1,
         ]);
 
         $verifyUser = VerifyUser::create([

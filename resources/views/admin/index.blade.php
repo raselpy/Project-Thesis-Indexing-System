@@ -20,7 +20,7 @@
 
 
 @section('content')
-    <div class="container" style="user-select: none;margin-left:95px;">
+    <div class="container" style="user-select: none;margin-left:55px;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                
@@ -59,18 +59,14 @@
                   @endif
                       </th>
                       <td>
-                          @php
-                                    $req_tech = $file->required_technology;
-                                    $names = explode(",", $req_tech);
-                                @endphp
-                                @foreach($names as $name)
-                                 <dd style="color: black;padding-left: 15px"><i class="fas fa-angle-double-right"> {{$name}}</i></dd>
-                                 @endforeach
+                          
+                             {{$file->name}}
+                                 
                       </td>
                       <td>
-                          {{$file->contributor_name1}} <i class="fas fa-angle-right"></i>
+                          {{$file->contributor_name1}}<br> 
                           {{$file->contributor_id1}} <br> 
-                          {{$file->contributor_name2}} <i class="fas fa-angle-right"></i>
+                          {{$file->contributor_name2}} <br> 
                           {{$file->contributor_id2}}
                       </td>
                       <td>{{$file->supervisor_name}}</td>
@@ -87,7 +83,7 @@
                       </td>
                       <td>
                         
-
+                              @if($file->type=="project")
                                 <form action="{{route('downloadZipFile')}}" method="POST">
                                     @csrf
                                     <input type="hidden" name="fileId" value="{{$file->id}}">
@@ -97,13 +93,12 @@
                                     </i>
                                     </button>
                                 </form>
+                                @endif
                             
                       </td>
 
-                      <td>
-                        <td class="center aligned">
-                        <a href="{{route('file.delete',$idea->id)}}">Delete</a>
-                      </td>
+                      <td class="center aligned">
+                        <a href="{{route('file.delete',$file->id)}}">Delete</a>
                       </td>
 
                     </tr>

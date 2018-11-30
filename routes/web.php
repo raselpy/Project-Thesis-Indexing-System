@@ -75,4 +75,7 @@ Route::group(['middleware'=>['auth']], function (){
    Route::post('comment/{idea}','CommentController@store')->name('comment.store');
 });
 
+Route::get('/register/teacher','RegisterTeacherController@showRegisterForm')->name('registerTeacher');
+Route::post('/register/teacher/store','RegisterTeacherController@store')->name('register.submit');
+
 

@@ -70,6 +70,7 @@
                                     <option value="2">Teacher</option>
                                 </select> 
                             </div>
+                            <!-- <input type="hidden" name="role"> -->
                        </div>
 
                         <div class="form-group row mb-0">

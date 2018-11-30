@@ -13,7 +13,7 @@ class ThesisIdeaController extends Controller
 
     public function index()
     {
-        $ideas = Idea::paginate(6);
+        $ideas = Idea::all();
         // dd($ideas);
         // return view('thesis_idea',compact('ideas'));
         return view('student.thesis_idea',compact('ideas'));

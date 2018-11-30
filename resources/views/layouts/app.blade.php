@@ -94,6 +94,12 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <!-- <a class="nav-link item dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item item" href="{{ route('register') }}">{{ __('Student Register') }}</a>
+                                      <div class="dropdown-divider"></div>
+                                      <a class="dropdown-item item" href="{{ route('registerTeacher') }}">{{ __('Teacher Register') }}</a>
+                                    </div> -->
                             </li>
                         @else 
 
