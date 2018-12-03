@@ -8,6 +8,8 @@ use Session;
 use App\ProjectFiles;
 use App\Category;
 use File;
+use Illuminate\Support\Facades\Auth;
+
 
 class FileSubmitController extends Controller
 {
@@ -17,9 +19,9 @@ class FileSubmitController extends Controller
     }
      public function submit_files_form(){
         $categories = Category::all();
-        // dd($categories);
+        $user = Auth::user();
         // return view('submit_files_form');
-        return view('student.submit_files_form',compact('categories'));
+        return view('student.submit_files_form',compact('categories','user'));
     }
 
     public function store_files(Request $request){
@@ -93,12 +95,13 @@ class FileSubmitController extends Controller
         $ProjectFiles->name = $request->input('name');
         $ProjectFiles->description = $request->input('description');
         $ProjectFiles->required_technology = $request->input('required_technology');
+        $ProjectFiles->user_id = $request->input('user');
         $ProjectFiles->doc = $docNameToStore;
         $ProjectFiles->image = $imageString;
         // $ProjectFiles->image = json_encode($data);
         $ProjectFiles->path = $fileNameToStore;
         $ProjectFiles->created_at = Carbon::now()->toDateTimeString();
-        // dd($ProjectFiles);
+         // dd($ProjectFiles);
         $ProjectFiles->save();
 
         return redirect('/project/submit/form');

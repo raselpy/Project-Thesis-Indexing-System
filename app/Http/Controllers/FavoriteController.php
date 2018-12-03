@@ -12,8 +12,9 @@ class FavoriteController extends Controller
 {
     public function index(){
         $ideas = Auth::user()->favorite_ideas;
+        $user = Auth::User();
         // dd($ideas);
-        return view('student.favorite',compact('ideas'));
+        return view('student.favorite',compact('ideas','user'));
     }
     public function add($ideas)
     {

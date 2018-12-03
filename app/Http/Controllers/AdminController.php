@@ -10,7 +10,7 @@ use App\Category;
 use Illuminate\Support\Facades\Session;
 use DB;
 use Storage;
-
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -21,14 +21,34 @@ class AdminController extends Controller
 
 	public function index(){
 		$files = ProjectFiles::paginate(8);
-        $users = User::all();
-		return view('admin.index',compact('files','users'));
+        $user = Auth::User();
+		return view('admin.index',compact('files','user'));
 	}
+    public function project(){
+        $user = Auth::user();
+        $files = ProjectFiles::all();
+        return view('admin.MyProject',compact('user','files'));
+    }
+
+    
+    public function favorite(){
+        $ideas = Auth::user()->favorite_ideas;
+        $user = Auth::User();
+        // dd($ideas);
+        return view('admin.favorite',compact('ideas','user'));
+    }
+
+    
+    public function my_idea(){
+        $user = Auth::user();
+        $ideas = Idea::all();
+        return view('admin.MyIdea',compact('user','ideas'));
+    }
 
     public function idea(){
         $ideas = Idea::paginate(8);
-         $users = User::all();
-        return view('admin.idea',compact('ideas','users'));
+         $user = Auth::User();
+        return view('admin.idea',compact('ideas','user'));
     }
     public function idea_delete($id){
         $idea = Idea::find($id);

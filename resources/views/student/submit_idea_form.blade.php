@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('dashboard')
+        @auth
+            @if($user->role==1)
+               <a class="nav-link item" href="{{route('student.dashboard')}}">{{ __('Student Dashboard') }}</a>
+            @endif
+            @if($user->role==3)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Admin Dashboard') }}</a>
+            @endif
+            @if($user->role==2)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Teacher Dashboard') }}</a>
+            @endif
+        @endauth
+@endsection
+
 @section('content')
 
 <div class="container" >
@@ -48,7 +62,7 @@
                        </div>
                    </div>
 
-                    <label class="ui dividing ">Idea Info</label>
+                    <label style="font-size: 15px" class="ui dividing header ">Idea Info</label>
                    <div class="two fields">
                        <div class="form-group field">
                         <input type="textarea" name="name" class="form-control" placeholder="name">
@@ -63,6 +77,10 @@
                    <div class="form-group">
                           
                           <textarea class="form-control" placeholder="description" id="description" name="description">{{old('description')}}</textarea>
+                   </div>
+
+                   <div class="form-group field">
+                        <input type="hidden" name="user" value="{{ $user->id }}">
                    </div>
 
                    

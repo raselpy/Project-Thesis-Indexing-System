@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('dashboard')
+        @auth
+            @if($user->role==1)
+               <a class="nav-link item" href="{{route('student.dashboard')}}">{{ __('Student Dashboard') }}</a>
+            @endif
+            @if($user->role==3)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Admin Dashboard') }}</a>
+            @endif
+            @if($user->role==2)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Teacher Dashboard') }}</a>
+            @endif
+        @endauth
+@endsection
+
 @section('content')
 
 <div class="container" >
@@ -99,6 +113,10 @@
                        <input type="text" name="required_technology" class="form-control" placeholder="Enter required technology">
                    </div>
                       </div>
+
+                      <div class="form-group field">
+                        <input type="hidden" name="user" value="{{ $user->id }}">
+                       </div>
 
                    
 

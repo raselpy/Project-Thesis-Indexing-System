@@ -1,5 +1,19 @@
 @extends('layouts.app')
 
+@section('dashboard')
+        @auth
+            @if($user->role==1)
+               <a class="nav-link item" href="{{route('student.dashboard')}}">{{ __('Student Dashboard') }}</a>
+            @endif
+            @if($user->role==3)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Admin Dashboard') }}</a>
+            @endif
+            @if($user->role==2)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Teacher Dashboard') }}</a>
+            @endif
+        @endauth
+@endsection
+
 @section('content')
 <div class="container" style="user-select: none;">
         <div class="row justify-content-center">
@@ -22,7 +36,7 @@
                         
                         <div class="col-lg-10 text-justify" style="margin-left: 35px">
                                 <p style="font-family: 'Noto Sans TC', sans-serif;">
-                                {{ str_limit($idea->description, 320) }}
+                                {{ str_limit($idea->description,220) }}
                             </p>
                         </div>
                         

@@ -1,7 +1,9 @@
 @extends('layouts.admin')
 
 @section('user')
-   @foreach($users as $user)
+   @auth
+            
+        
        @if($user->role==3)
            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -15,19 +17,20 @@
               </div>
          </li>
        @endif
-    @endforeach    
+       @if($user->role==2)
+           <li class="nav-item">
+          <a class="nav-link" href="{{route('admin.favorite')}}">
+            <i class="file icon"></i>
+            <span>Favorite</span></a>
+        </li> 
+       @endif
+       @endauth  
 @endsection
 
 @section('content')
     <div class="container" style="user-select: none;margin-left:95px;">
-        <div class="row justify-content-center">
-        	@if (\Session::has('success'))
-			    <div class="alert alert-success">
-			        <ul>
-			            <li>{!! \Session::get('success') !!}</li>
-			        </ul>
-			    </div>
-			@endif
+        <div class="row justify-content-center" style="margin-left: 177px;margin-top: 44px;">
+        	<h3 style="font-family: 'Francois One', sans-serif;text-align: center;">Teacher List</h3>
             <table class="ui celled structured table">
 
   <thead>

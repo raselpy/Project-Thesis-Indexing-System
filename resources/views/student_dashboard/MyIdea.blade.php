@@ -1,34 +1,10 @@
-@extends('layouts.admin')
+@extends('layouts.studentDashboard')
 
-@section('user')
-       @auth
-            
-        
-       @if($user->role==3)
-           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="users icon"></i>
-                <span>Users</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Users:</h6>
-                <a class="dropdown-item" href="{{route('admin.student')}}">Students</a>
-                <a class="dropdown-item" href="{{route('admin.teacher')}}">Teachers</a>
-              </div>
-         </li>
-       @endif
-       @if($user->role==2)
-           <li class="nav-item">
-          <a class="nav-link" href="{{route('admin.favorite')}}">
-            <i class="file icon"></i>
-            <span>Favorite</span></a>
-        </li> 
-       @endif
-       @endauth   
-@endsection
+
 
 @section('content')
-     <div class="container" style="user-select: none;margin-left:95px;">
+
+  <div class="container" style="user-select: none;margin-left:95px;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                
@@ -49,6 +25,7 @@
                     @foreach($ideas as $idea)
 
                     @if($idea->status==1)
+                    @if($idea->user_id == $user->id)
                         
 
                     <tr>
@@ -84,6 +61,7 @@
 
                     </tr>
                     @endif
+                    @endif
                 @endforeach
                     
                   </tbody>
@@ -92,17 +70,10 @@
                 
                </div>
 
-               <div class="row">
-                   <div class="col-lg-5 col-md-5"></div>
-                   <div class="col-lg-3 col-md-3">
-                       {{$ideas->links()}}
-                   </div>
-                   <div class="col-lg-4 col-md-4"></div>
-               </div>
+               
                         
                </div>
         </div>
     </div>
-
 
 @endsection

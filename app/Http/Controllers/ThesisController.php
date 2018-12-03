@@ -10,6 +10,7 @@ use App\Category;
 use Illuminate\Support\Facades\Session;
 use DB;
 use Storage;
+use Illuminate\Support\Facades\Auth;
 
 
 class ThesisController extends Controller
@@ -17,9 +18,10 @@ class ThesisController extends Controller
     public function index()
     {
         $files = ProjectFiles::paginate(8);
+        $user = Auth::User();
         // $files=DB::table('project_files')->get();
         // dd($files);
-        return view('student.thesis',compact('files'));
+        return view('student.thesis',compact('files','user'));
     }
 
     public function detail($id){
@@ -32,10 +34,11 @@ class ThesisController extends Controller
         }
 
        $category = Category::find($id);
+       $user = Auth::User();
        // dd($category);
 
          
-    	return view('student.thesis_detail',compact('files','category'));
+    	return view('student.thesis_detail',compact('files','category','user'));
     }
 
 

@@ -9,6 +9,7 @@ use App\Category;
 use Illuminate\Support\Facades\Session;
 use DB;
 use Storage;
+use Illuminate\Support\Facades\Auth;
 
 
 class ProjectController extends Controller
@@ -29,8 +30,9 @@ class ProjectController extends Controller
     public function index()
     {
         $files = ProjectFiles::paginate(18);
+        $user = Auth::User();
         // dd($files);
-        return view('student.project',compact('files'));
+        return view('student.project',compact('files','user'));
     }
 
     public function detail($id){
@@ -43,10 +45,11 @@ class ProjectController extends Controller
         }
 
        $category = Category::find($id);
+       $user = Auth::User();
        // dd($category);
 
          
-        return view('student.project_detail',compact('files','category'));
+        return view('student.project_detail',compact('files','category','user'));
     }
 
    

@@ -48,6 +48,11 @@
                     <!-- <ul class="navbar-nav mr-auto"> -->
 
                             <ul class="nav nav-pills" style="margin-left: 35px">
+
+                                  <li class="nav-item">
+                                    @yield('dashboard')
+                                  </li>
+
                                   <li class="nav-item">
                                     <a class="nav-link item" href="{{route('submit_idea_form')}}">Submit Idea</a>
                                   </li>
@@ -65,9 +70,9 @@
 
                                   
 
-                                  <li class="nav-item">
+                                  <!-- <li class="nav-item">
                                     <a class="nav-link item" href="{{route('favorite')}}">Favorite</a>
-                                  </li>
+                                  </li> -->
 
                                   <li class="nav-item">
                                     <a class="nav-link item" href="{{route('submit_files_form')}}">Submit Files</a>
@@ -94,12 +99,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                <!-- <a class="nav-link item dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Register</a>
-                                    <div class="dropdown-menu">
-                                      <a class="dropdown-item item" href="{{ route('register') }}">{{ __('Student Register') }}</a>
-                                      <div class="dropdown-divider"></div>
-                                      <a class="dropdown-item item" href="{{ route('registerTeacher') }}">{{ __('Teacher Register') }}</a>
-                                    </div> -->
+                                
                             </li>
                         @else 
 

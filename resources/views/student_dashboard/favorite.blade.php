@@ -1,17 +1,9 @@
 @extends('layouts.studentDashboard')
 
-@section('dashboard')
-        @auth
-            @if($user->role==1)
-               <a class="nav-link item" href="{{route('student.dashboard')}}">{{ __('Student Dashboard') }}</a>
-            @endif
-        @endauth
-@endsection
-
 @section('content')
-<div class="container" style="user-select: none;">
+<div class="container" style="margin-left:191px;margin-top:auto;">
         <div class="row justify-content-center">
-           <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 20px">Project Idea List</h2>
+           <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">My Favorite Idea List</h2>
             <table class="ui celled padded table">
   <thead>
     <tr><th scope="col" style="text-align: center;" class="single line">Idea Type</th>

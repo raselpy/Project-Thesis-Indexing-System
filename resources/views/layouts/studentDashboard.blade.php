@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Project/Thesis - Dashboard</title>
+    <title>Student - Dashboard</title>
 
     <!-- Bootstrap core CSS-->
     <link href="{{asset('admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -41,7 +41,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="{{route('admin')}}">Indexing-Dashboard</a>
+      <a class="navbar-brand mr-1" href="{{route('student.dashboard')}}">Student-Dashboard</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="bars icon"></i>
@@ -76,42 +76,26 @@
     <div id="wrapper">
 
       <!-- Sidebar -->
-      <ul class="sidebar navbar-nav" style="width: 200px;">
+      <ul class="sidebar navbar-nav" style="width: 200px">
         
-       
+        
          @yield('user')
-
-        
-
-
-
-
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-lightbulb"></i>
-              <span>Ideas</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <h6 class="dropdown-header">Idea:</h6>
-              <a class="dropdown-item link" href="{{route('admin.idea')}}">Ideas</a>
-              <a class="dropdown-item link" href="{{route('admin.MyIdea')}}">My Ideas</a>
-            </div>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('student.dashboard')}}">
+            <i class="far fa-lightbulb"></i>
+            <span>favorite Ideas</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('student.project')}}">
+            <i class="file icon"></i>
+            <span>My Files</span></a>
         </li>
 
-
-
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="file icon"></i>
-              <span>Files</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-              <h6 class="dropdown-header">Files:</h6>
-              <a class="dropdown-item link" href="{{route('admin')}}">Files</a>
-              <a class="dropdown-item link" href="{{route('admin.MyProject')}}">My Files</a>
-            </div>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('student.MyIdea')}}">
+            <i class="file icon"></i>
+            <span>My ideas</span></a>
         </li>
-
 
         <li class="nav-item">
           <a class="nav-link" href="{{route('idea_thesis')}}">

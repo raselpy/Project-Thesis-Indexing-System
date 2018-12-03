@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('dashboard')
+        @auth
+            @if($user->role==1)
+               <a class="nav-link item" href="{{route('student.dashboard')}}">{{ __('Student Dashboard') }}</a>
+            @endif
+            @if($user->role==3)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Admin Dashboard') }}</a>
+            @endif
+            @if($user->role==2)
+               <a class="nav-link item" href="{{route('admin')}}">{{ __('Teacher Dashboard') }}</a>
+            @endif
+        @endauth
+@endsection
+
+
 @section('content')
 <div class="container" style="user-select: none;">
         <div class="row justify-content-center">

@@ -24,7 +24,8 @@ class CreateProjectFilesTable extends Migration
             $table->string('supervisor_name');
             $table->string('name');
             $table->longText('description');
-            $table->string('required_technology');
+            $table->string('required_technology'); 
+            $table->integer('user_id');
             $table->string('doc');
             $table->string('image');
             $table->string('path');

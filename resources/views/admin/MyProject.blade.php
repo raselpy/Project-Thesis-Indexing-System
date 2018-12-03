@@ -27,14 +27,14 @@
        @endauth 
 @endsection
 
-
 @section('content')
-    <div class="container" style="user-select: none;margin-left:55px;">
+ 
+ <div class="container" style="user-select: none;margin-left:55px;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                
                <div>
-                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">Project/Thesis List</h3>
+                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">My Project/Thesis List</h3>
                 
                 
                 <table class="table" style="margin-top:40px">
@@ -52,6 +52,7 @@
                   <tbody>
                     @foreach($files as $file)
                     @if($file->status==1)
+                    @if($file->user_id == $user->id)
 
                     <tr>
                       <th scope="row">
@@ -112,6 +113,7 @@
 
                     </tr>
                     @endif
+                    @endif
                 @endforeach
                     
                   </tbody>
@@ -120,15 +122,9 @@
                 
                </div>
 
-               <div class="row">
-                   <div class="col-lg-5 col-md-5"></div>
-                   <div class="col-lg-3 col-md-3">
-                       {{$files->links()}}
-                   </div>
-                   <div class="col-lg-4 col-md-4"></div>
-               </div>
                         
                </div>
         </div>
     </div>
+
 @endsection

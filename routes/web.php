@@ -51,6 +51,12 @@ Route::post('/project/store','FileSubmitController@store_files')->name('store_fi
 Route::get('/idea/submit/form','IdeaSubmitController@submit_idea_form')->name('submit_idea_form');
 Route::post('/idea/store','IdeaSubmitController@store_idea')->name('store_idea');
 
+// student Dashboard
+Route::get('/student/dashboard','StudentDashboardController@index')->name('student.dashboard');
+Route::get('/student/my_project','StudentDashboardController@project')->name('student.project');
+Route::get('/student/favorite','StudentDashboardController@idea')->name('student.MyIdea');
+//End student Dashboard
+
 // end student controller
 
 // start admin/teacher controller
@@ -63,6 +69,9 @@ Route::get('/admin/student','AdminController@student')->name('admin.student');
 Route::get('/admin/teacher','AdminController@teacher')->name('admin.teacher');
 Route::get('/admin/delete/{id}','AdminController@delete')->name('admin.delete');
 Route::get('/admin/update/{id}','AdminController@update')->name('admin.update');
+Route::get('/admin/my_project','AdminController@project')->name('admin.MyProject');
+Route::get('/admin/my_idea','AdminController@my_idea')->name('admin.MyIdea');
+Route::get('/admin/favorite','AdminController@favorite')->name('admin.favorite');
 
 Route::get('/admin/permission','PermissionController@permission')->name('permission');
 Route::post('/thesis/dic/download','AdminController@downloadDocFile')->name('downloadDocFile');
@@ -75,7 +84,7 @@ Route::group(['middleware'=>['auth']], function (){
    Route::post('comment/{idea}','CommentController@store')->name('comment.store');
 });
 
-Route::get('/register/teacher','RegisterTeacherController@showRegisterForm')->name('registerTeacher');
-Route::post('/register/teacher/store','RegisterTeacherController@store')->name('register.submit');
+// Route::get('/register/teacher','RegisterTeacherController@showRegisterForm')->name('registerTeacher');
+// Route::post('/register/teacher/store','RegisterTeacherController@store')->name('register.submit');
 
 

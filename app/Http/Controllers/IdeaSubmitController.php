@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Idea;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 class IdeaSubmitController extends Controller
 {
@@ -18,10 +19,12 @@ class IdeaSubmitController extends Controller
         $categories = Category::all();
         // dd($categories);
         // return view('submit_files_form');
-        return view('student.submit_idea_form',compact('categories'));
+        $user = Auth::User();
+        return view('student.submit_idea_form',compact('categories','user'));
     }
 
     public function store_idea(Request $request){
+        
 
         $this->validate($request,[
             'name' => 'required'
@@ -33,6 +36,7 @@ class IdeaSubmitController extends Controller
              'name'=> $_POST['name'],
              'description'=> $_POST['description'],
              'required_technology'=> $_POST['required_technology'],
+             'user_id' =>$_POST['user'],
              'created_at' => Carbon::now()->toDateTimeString(),
 
 

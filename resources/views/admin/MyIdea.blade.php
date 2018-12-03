@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('user')
-       @auth
+   @auth
             
         
        @if($user->role==3)
@@ -24,11 +24,12 @@
             <span>Favorite</span></a>
         </li> 
        @endif
-       @endauth   
+       @endauth 
 @endsection
 
 @section('content')
-     <div class="container" style="user-select: none;margin-left:95px;">
+
+  <div class="container" style="user-select: none;margin-left:95px;">
         <div class="row justify-content-center">
             <div class="col-md-12">
                
@@ -49,6 +50,7 @@
                     @foreach($ideas as $idea)
 
                     @if($idea->status==1)
+                    @if($idea->user_id == $user->id)
                         
 
                     <tr>
@@ -84,6 +86,7 @@
 
                     </tr>
                     @endif
+                    @endif
                 @endforeach
                     
                   </tbody>
@@ -92,17 +95,10 @@
                 
                </div>
 
-               <div class="row">
-                   <div class="col-lg-5 col-md-5"></div>
-                   <div class="col-lg-3 col-md-3">
-                       {{$ideas->links()}}
-                   </div>
-                   <div class="col-lg-4 col-md-4"></div>
-               </div>
+               
                         
                </div>
         </div>
     </div>
-
 
 @endsection

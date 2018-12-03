@@ -16,12 +16,14 @@ class ThesisIdeaController extends Controller
         $ideas = Idea::all();
         // dd($ideas);
         // return view('thesis_idea',compact('ideas'));
-        return view('student.thesis_idea',compact('ideas'));
+        $user = Auth::User();
+        return view('student.thesis_idea',compact('ideas','user'));
     }
 
     public function detail($id){
          $user = Auth::user();
     	$ideas = Idea::find($id);
+
     	return view('student.thesis_idea_detail',compact('ideas','user'));
     }
 
