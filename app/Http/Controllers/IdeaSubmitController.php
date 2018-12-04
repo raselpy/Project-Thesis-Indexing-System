@@ -44,9 +44,9 @@ class IdeaSubmitController extends Controller
 
         if($insert){
             
-            return redirect('/idea/submit/form');
+            return redirect()->back();
         }else{
-            return redirect('/idea/submit/form');
+            return redirect()->back();
         }
     }
 }

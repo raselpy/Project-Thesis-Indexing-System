@@ -27,5 +27,12 @@ class ThesisIdeaController extends Controller
     	return view('student.thesis_idea_detail',compact('ideas','user'));
     }
 
+    public function idea_thesis_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+                return view('student.idea_thesis_search',compact('ideas','user'));
+    }
+
     
 }

@@ -104,7 +104,7 @@ class FileSubmitController extends Controller
          // dd($ProjectFiles);
         $ProjectFiles->save();
 
-        return redirect('/project/submit/form');
+        return redirect()->back();
     }
 
 }

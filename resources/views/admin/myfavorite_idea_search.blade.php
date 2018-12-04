@@ -28,16 +28,15 @@
 @endsection
 
 @section('content')
-<div class="container" style="margin-left:70px;margin-top:auto;">
-     <div >
-            <form class="ui form" method="GET" action="{{route('admin_favorite_idea_search')}}">
+<div class="container" style="margin-left:99px;margin-top:auto;">
+    <div >
+            <form class="ui form" method="GET" action="{{route('student.search.farorite.idea')}}">
               <div class="four fields">
-                <input class="field" style="margin-left: 600px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <input class="field" style="margin-left: 650px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
                 <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
               </div>  
             </form>
       </div>
-
         <div class="row justify-content-center">
            <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">My Favorite Idea List</h2>
             <table class="ui celled padded table">
@@ -48,7 +47,9 @@
     
   </tr></thead>
   <tbody>
+    @foreach($fav_ideas as $fav_idea)
     @foreach($ideas as $idea)
+    @if($idea->id==$fav_idea->id)
     <tr>
       <td class="text-center">
         @if($idea->type=="project")
@@ -78,6 +79,20 @@
       </td>
       
     </tr>
+    @else
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-info">
+                                    <h4 class="title">
+                                        <strong>Sorry, No Favorite Idea found :(</strong>
+                                    </h4>
+                                </div><!-- blog-info -->
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+</div><!-- col-lg-4 col-md-6 -->
+    @endif
+    @endforeach 
     @endforeach 
   </tbody>
 

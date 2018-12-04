@@ -33,7 +33,7 @@
     <link href="https://fonts.googleapis.com/css?family=Francois+One|Noto+Sans+TC|Oswald|Pontano+Sans" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet"> 
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  <script>tinymce.init({ selector:'textarea' });</script>
+  <!-- <script>tinymce.init({ selector:'textarea' });</script> -->
 
   </head>
 
@@ -110,6 +110,18 @@
               <a class="dropdown-item link" href="{{route('admin')}}">Files</a>
               <a class="dropdown-item link" href="{{route('admin.MyProject')}}">My Files</a>
             </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('admin_submit_file_form')}}">
+            <i class="home icon"></i>
+            <span>Submit File</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{route('admin_submit_idea_form')}}">
+            <i class="home icon"></i>
+            <span>Submit Idea</span></a>
         </li>
 
 

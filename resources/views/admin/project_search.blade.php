@@ -27,22 +27,25 @@
        @endauth 
 @endsection
 
+
 @section('content')
- 
- <div class="container" style="user-select: none;margin-left:55px;">
-       <div >
-            <form class="ui form" method="GET" action="{{route('admin_myfile_search')}}">
+    <div class="container" style="user-select: none;margin-left:55px;">
+
+      <div >
+            <form class="ui form" method="GET" action="{{route('admin_project_search')}}">
               <div class="four fields">
-                <input class="field" style="margin-left: 600px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <input class="field" style="margin-left: 800px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
                 <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
               </div>  
             </form>
       </div>
+      
         <div class="row justify-content-center">
             <div class="col-md-12">
+
                
                <div>
-                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">My Project/Thesis List</h3>
+                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">Project/Thesis List</h3>
                 
                 
                 <table class="table" style="margin-top:40px">
@@ -60,7 +63,6 @@
                   <tbody>
                     @foreach($files as $file)
                     @if($file->status==1)
-                    @if($file->user_id == $user->id)
 
                     <tr>
                       <th scope="row">
@@ -121,7 +123,6 @@
 
                     </tr>
                     @endif
-                    @endif
                 @endforeach
                     
                   </tbody>
@@ -130,9 +131,9 @@
                 
                </div>
 
+              
                         
                </div>
         </div>
     </div>
-
 @endsection

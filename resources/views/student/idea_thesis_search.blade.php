@@ -18,7 +18,7 @@
 @section('content')
 <div class="container" style="user-select: none;">
       <div >
-            <form class="ui form" method="GET" action="{{route('idea_project.search')}}">
+            <form class="ui form" method="GET" action="{{route('idea_thesis.search')}}">
               <div class="four fields">
                 <input class="field" style="margin-left: 800px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
                 <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
@@ -26,9 +26,9 @@
             </form>
       </div>
         <div class="row justify-content-center">
-            <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">Project Idea List</h2>
+            <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">Thesis Idea List</h2>
            @foreach($ideas as $idea)
-                @if($idea->type=="project")
+                @if($idea->type=="thesis")
                 @if($idea->status==1)
 
             <div class="ui" style="margin-bottom: 20px">

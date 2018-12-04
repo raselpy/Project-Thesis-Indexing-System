@@ -17,6 +17,7 @@
             <div class="col-md-10">
                
                <div>
+                @if($ideas->count() > 0)
                 <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">Project/Thesis Idea List</h3>
                 
                 
@@ -38,29 +39,29 @@
 
                     <tr>
                       <th scope="row">
-                      	@if($idea->type=="project")
-				            <h5>
-				              Project
-				            </h5>
-				         @endif
+                        @if($idea->type=="project")
+                    <h5>
+                      Project
+                    </h5>
+                 @endif
 
-				         @if($idea->type=="thesis")
-				             <h5>
-				               Thesis
-				             </h5>         
-				          @endif
+                 @if($idea->type=="thesis")
+                     <h5>
+                       Thesis
+                     </h5>         
+                  @endif
                       </th>
                       <td>
                           {{$idea->name}}
                       </td>
                       <td>
                          @if($idea->type=="project")
-				            <a class="ui button" href="{{url('project_idea/details/' . $idea->id)}}">View Idea Detail</a>
-				         @endif
+                    <a class="ui button" href="{{url('project_idea/details/' . $idea->id)}}">View Idea Detail</a>
+                 @endif
 
-				         @if($idea->type=="thesis")
-				             <a class="ui button" href="{{url('thesis_idea/details/' . $idea->id)}}">View Idea Detail</a>
-				         @endif  
+                 @if($idea->type=="thesis")
+                     <a class="ui button" href="{{url('thesis_idea/details/' . $idea->id)}}">View Idea Detail</a>
+                 @endif  
                       </td>
                       <!-- <td class="center aligned">
                         <a href="{{route('idea.delete',$idea->id)}}">Delete</a>
@@ -71,6 +72,19 @@
                     @endif
                     @endif
                 @endforeach
+                @else
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-info">
+                                    <h4 class="title">
+                                        <strong>Sorry, No Idea found :(</strong>
+                                    </h4>
+                                </div><!-- blog-info -->
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+</div><!-- col-lg-4 col-md-6 -->
+                    @endif
                     
                   </tbody>
                 </table>

@@ -15,13 +15,20 @@ use Illuminate\Support\Facades\Auth;
 
 class ThesisController extends Controller
 {
-    public function index()
+    public function thesis()
     {
         $files = ProjectFiles::paginate(8);
         $user = Auth::User();
         // $files=DB::table('project_files')->get();
         // dd($files);
         return view('student.thesis',compact('files','user'));
+    }
+
+    public function thesis_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
+                return view('student.thesis_search',compact('files','user'));
     }
 
     public function detail($id){

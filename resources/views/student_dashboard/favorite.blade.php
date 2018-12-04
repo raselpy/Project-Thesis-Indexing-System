@@ -1,7 +1,15 @@
 @extends('layouts.studentDashboard')
 
 @section('content')
-<div class="container" style="margin-left:191px;margin-top:auto;">
+<div class="container" style="margin-left:99px;margin-top:auto;">
+    <div >
+            <form class="ui form" method="GET" action="{{route('student.search.farorite.idea')}}">
+              <div class="four fields">
+                <input class="field" style="margin-left: 650px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
+              </div>  
+            </form>
+      </div>
         <div class="row justify-content-center">
            <h2 style="font-family: 'Francois One', sans-serif; margin-bottom: 40px">My Favorite Idea List</h2>
             <table class="ui celled padded table">

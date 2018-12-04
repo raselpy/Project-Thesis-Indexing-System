@@ -30,5 +30,29 @@ class StudentDashboardController extends Controller
         return view('student_dashboard.MyIdea',compact('user','ideas'));
     }
 
+    public function file_search(Request $request){
+    	        $user = Auth::user();
+                $query = $request->input('query');
+                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
+         return view('student_dashboard.file_search',compact('files','query','user'));
+    }
+
+    public function idea_search(Request $request){
+    	        $user = Auth::user();
+                $query = $request->input('query');
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+         return view('student_dashboard.idea_search',compact('ideas','query','user'));
+    }
+
+    
+    public function favorite_idea_search(Request $request){
+    	        
+                $query = $request->input('query');
+                $fav_ideas = Auth::user()->favorite_ideas;
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+                // dd($ideas);
+         return view('student_dashboard.favorite_idea_search',compact('fav_ideas','ideas','query','user'));
+    }
+
 	
 }

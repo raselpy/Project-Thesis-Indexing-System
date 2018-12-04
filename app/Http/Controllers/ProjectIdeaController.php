@@ -25,4 +25,11 @@ class ProjectIdeaController extends Controller
         $user = Auth::User();
         return view('student.project_idea_detail',compact('ideas','user'));
     }
+
+    public function idea_project_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+                return view('student.idea_search',compact('ideas','user'));
+    }
 }

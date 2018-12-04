@@ -1,47 +1,26 @@
-@extends('layouts.admin')
-
-@section('user')
-   @auth
-            
-        
-       @if($user->role==3)
-           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="users icon"></i>
-                <span>Users</span>
-              </a>
-              <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header">Users:</h6>
-                <a class="dropdown-item" href="{{route('admin.student')}}">Students</a>
-                <a class="dropdown-item" href="{{route('admin.teacher')}}">Teachers</a>
-              </div>
-         </li>
-       @endif
-       @if($user->role==2)
-           <li class="nav-item">
-          <a class="nav-link" href="{{route('admin.favorite')}}">
-            <i class="file icon"></i>
-            <span>MY Favorite</span></a>
-        </li> 
-       @endif
-       @endauth 
-@endsection
+@extends('layouts.studentDashboard')
 
 @section('content')
  
  <div class="container" style="user-select: none;margin-left:55px;">
-       <div >
-            <form class="ui form" method="GET" action="{{route('admin_myfile_search')}}">
+    <div >
+            <form class="ui form" method="GET" action="{{route('student.search.file')}}">
               <div class="four fields">
-                <input class="field" style="margin-left: 600px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <input class="field" style="margin-left: 735px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
                 <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
               </div>  
             </form>
+      </div>
+      <div>
+      <div class="col-lg-6" style="margin-left: 227px; margin-bottom: 40px">
+       <!--  <h2 class="header text-center"><b>{{ $files->count() }} Results for {{ $query }}</b></h2> -->
+      </div>
       </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
                
                <div>
+                @if($files->count() > 0)
                 <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">My Project/Thesis List</h3>
                 
                 
@@ -54,10 +33,11 @@
                       <th scope="col">Thesis supervisor</th>
                       <th scope="col">Doc</th>
                       <th scope="col">Source File</th>
-                      <th scope="col">Action</th>
+                      <!-- <th scope="col">Action</th> -->
                     </tr>
                   </thead>
                   <tbody>
+                    
                     @foreach($files as $file)
                     @if($file->status==1)
                     @if($file->user_id == $user->id)
@@ -115,15 +95,27 @@
                             
                       </td>
 
-                      <td class="center aligned">
+                      <!-- <td class="center aligned">
                         <a href="{{route('file.delete',$file->id)}}">Delete</a>
-                      </td>
+                      </td> -->
 
                     </tr>
                     @endif
                     @endif
                 @endforeach
-                    
+                @else
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card h-100">
+                            <div class="single-post post-style-1">
+                                <div class="blog-info">
+                                    <h4 class="title">
+                                        <strong>Sorry, No File found :(</strong>
+                                    </h4>
+                                </div><!-- blog-info -->
+                            </div><!-- single-post -->
+                        </div><!-- card -->
+</div><!-- col-lg-4 col-md-6 -->
+                    @endif
                   </tbody>
                 </table>
                    

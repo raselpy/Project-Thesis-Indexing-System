@@ -24,10 +24,25 @@ class AdminController extends Controller
         $user = Auth::User();
 		return view('admin.index',compact('files','user'));
 	}
+
+    public function project_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
+                return view('admin.project_search',compact('files','user'));
+    }
+
     public function project(){
         $user = Auth::user();
         $files = ProjectFiles::all();
         return view('admin.MyProject',compact('user','files'));
+    }
+
+    public function myfile_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
+                return view('admin.myfile_search',compact('files','user'));
     }
 
     
@@ -37,6 +52,14 @@ class AdminController extends Controller
         // dd($ideas);
         return view('admin.favorite',compact('ideas','user'));
     }
+    
+    public function myfavorite_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $fav_ideas = Auth::user()->favorite_ideas;
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+        return view('admin.myfavorite_idea_search',compact('fav_ideas','ideas','query','user'));
+    }
 
     
     public function my_idea(){
@@ -44,11 +67,25 @@ class AdminController extends Controller
         $ideas = Idea::all();
         return view('admin.MyIdea',compact('user','ideas'));
     }
+    
+    public function myidea_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+                return view('admin.myidea_search',compact('ideas','user'));
+    }
 
     public function idea(){
         $ideas = Idea::paginate(8);
          $user = Auth::User();
         return view('admin.idea',compact('ideas','user'));
+    }
+
+    public function idea_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $ideas = Idea::where('name','LIKE',"%$query%")->get();
+                return view('admin.idea_search',compact('ideas','user'));
     }
     public function idea_delete($id){
         $idea = Idea::find($id);
@@ -86,6 +123,21 @@ class AdminController extends Controller
         $user->role = 2;
         $user->save();
         return redirect()->back();   
+    }
+
+    public function submit_idea_form(){
+        $categories = Category::all();
+        // dd($categories);
+        // return view('submit_files_form');
+        $user = Auth::User();
+        return view('admin.submit_idea_form',compact('categories','user'));
+    }
+
+    public function submit_file_form(){
+        $categories = Category::all();
+        $user = Auth::user();
+        // return view('submit_files_form');
+        return view('admin.submit_file_form',compact('categories','user'));
     }
 
 

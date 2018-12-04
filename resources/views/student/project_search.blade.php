@@ -76,13 +76,7 @@
                 
                </div>
 
-               <div class="row">
-                   <div class="col-lg-5 col-md-5"></div>
-                   <div class="col-lg-3 col-md-3">
-                       {{$files->links()}}
-                   </div>
-                   <div class="col-lg-4 col-md-4"></div>
-               </div>
+               
                         
                </div>
         </div>

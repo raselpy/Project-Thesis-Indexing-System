@@ -1,9 +1,7 @@
 @extends('layouts.admin')
 
 @section('user')
-   @auth
-            
-        
+   @foreach($users as $user)
        @if($user->role==3)
            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -21,10 +19,10 @@
            <li class="nav-item">
           <a class="nav-link" href="{{route('admin.favorite')}}">
             <i class="file icon"></i>
-            <span>Favorite</span></a>
+            <span>MY Favorite</span></a>
         </li> 
        @endif
-       @endauth  
+    @endforeach    
 @endsection
 
 @section('content')

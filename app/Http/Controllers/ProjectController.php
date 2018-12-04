@@ -27,12 +27,20 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function project()
     {
         $files = ProjectFiles::paginate(18);
         $user = Auth::User();
         // dd($files);
         return view('student.project',compact('files','user'));
+    }
+
+    
+    public function project_search(Request $request){
+                $user = Auth::User();
+                $query = $request->input('query');
+                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
+                return view('student.project_search',compact('files','user'));
     }
 
     public function detail($id){

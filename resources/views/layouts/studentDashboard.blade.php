@@ -82,8 +82,8 @@
          @yield('user')
         <li class="nav-item">
           <a class="nav-link" href="{{route('student.dashboard')}}">
-            <i class="far fa-lightbulb"></i>
-            <span>favorite Ideas</span></a>
+            <i class="far fa-lightbulb"></i> 
+            <span> My Favorite Ideas</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{route('student.project')}}">

@@ -16,6 +16,14 @@
 
 @section('content')
 <div class="container" style="user-select: none;">
+       <div >
+            <form class="ui form" method="GET" action="{{route('thesis_search')}}">
+              <div class="four fields">
+                <input class="field" style="margin-left: 800px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
+              </div>  
+            </form>
+      </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
                

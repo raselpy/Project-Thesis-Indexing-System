@@ -3,6 +3,14 @@
 @section('content')
  
  <div class="container" style="user-select: none;margin-left:55px;">
+    <div >
+            <form class="ui form" method="GET" action="{{route('student.search.file')}}">
+              <div class="four fields">
+                <input class="field" style="margin-left: 742px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
+                <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
+              </div>  
+            </form>
+      </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
                
