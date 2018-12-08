@@ -33,7 +33,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if(Auth::user()->role==2 || Auth::user()->role==3){
-           return '/admin/index';
+           return '/admin/all_project/files';
         }
         else{
             return '/';

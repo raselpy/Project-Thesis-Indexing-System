@@ -31,16 +31,24 @@ class ProjectController extends Controller
     {
         $files = ProjectFiles::paginate(18);
         $user = Auth::User();
+        $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
         // dd($files);
-        return view('student.project',compact('files','user'));
+        return view('student.project',compact('files','user','file_unique'));
     }
 
     
     public function project_search(Request $request){
-                $user = Auth::User();
-                $query = $request->input('query');
-                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
-                return view('student.project_search',compact('files','user'));
+                $file_all = ProjectFiles::all();
+                $user = Auth::user();
+                $technology = $request->input('technology');
+                $Supervisor = $request->input('Supervisor');
+                $name = $request->input('name');
+                $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+                $files = ProjectFiles::where('required_technology','LIKE',"%$technology%")
+                  ->Where('supervisor_name', 'LIKE', "%$Supervisor%")
+                  ->Where('name', 'LIKE', "%$name%")
+                  ->get();
+                return view('student.project_search',compact('files','user','file_unique'));
     }
 
     public function detail($id){

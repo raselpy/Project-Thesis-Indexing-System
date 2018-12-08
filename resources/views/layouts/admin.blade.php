@@ -93,8 +93,8 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Idea:</h6>
-              <a class="dropdown-item link" href="{{route('admin.idea')}}">Ideas</a>
-              <a class="dropdown-item link" href="{{route('admin.MyIdea')}}">My Ideas</a>
+              <a class="dropdown-item link ui button" style="margin-bottom: 3px" href="{{route('admin.idea')}}">ALL Ideas</a>
+              <a class="dropdown-item link ui button" href="{{route('admin.MyIdea')}}">My Ideas</a>
             </div>
         </li>
 
@@ -107,8 +107,8 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
               <h6 class="dropdown-header">Files:</h6>
-              <a class="dropdown-item link" href="{{route('admin')}}">Files</a>
-              <a class="dropdown-item link" href="{{route('admin.MyProject')}}">My Files</a>
+              <a class="dropdown-item link ui button" style="margin-bottom: 3px" href="{{route('admin')}}">ALL Project/thesis Files</a>
+              <a class="dropdown-item link ui button" href="{{route('admin.MyProject')}}">My Files</a>
             </div>
         </li>
 

@@ -69,7 +69,7 @@ Route::get('/student/favorite/idea/search','StudentDashboardController@favorite_
 
 // start admin/teacher controller
 
-Route::get('/admin/index','AdminController@index')->name('admin');
+Route::get('/admin/all_project/files','AdminController@index')->name('admin');
 Route::get('admin/project/search','AdminController@project_search')->name('admin_project_search');
 
 Route::get('/admin/idea','AdminController@idea')->name('admin.idea');

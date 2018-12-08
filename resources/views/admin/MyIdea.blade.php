@@ -42,7 +42,7 @@
             <div class="col-md-12">
                
                <div>
-                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">Project/Thesis Idea List</h3>
+                <h3 style="font-family: 'Francois One', sans-serif;text-align: center;">My Project/Thesis Idea List</h3>
                 
                 
                 <table class="table" style="margin-top:40px">

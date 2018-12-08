@@ -78,7 +78,7 @@
                                     <a class="nav-link item" href="{{route('submit_files_form')}}">Submit Files</a>
                                   </li>
                                   <li class="nav-item dropdown">
-                                    <a class="nav-link item dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Index</a>
+                                    <a class="nav-link item dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Project/Thesis</a>
                                     <div class="dropdown-menu">
                                       <a class="dropdown-item item" href="{{ route('thesis') }}">Thesis</a>
                                       <div class="dropdown-divider"></div>

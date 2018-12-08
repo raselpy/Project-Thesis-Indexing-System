@@ -21,28 +21,45 @@ class AdminController extends Controller
 
 	public function index(){
 		$files = ProjectFiles::paginate(8);
+        $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
         $user = Auth::User();
-		return view('admin.index',compact('files','user'));
+		return view('admin.index',compact('files','user','file_unique'));
 	}
 
     public function project_search(Request $request){
+                $file_all = ProjectFiles::all();
                 $user = Auth::User();
-                $query = $request->input('query');
-                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
-                return view('admin.project_search',compact('files','user'));
+                $type = $request->input('type');
+                $Supervisor = $request->input('Supervisor');
+                $name = $request->input('name');
+                $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+                $files = ProjectFiles::where('type','LIKE',"%$type%")
+                  ->Where('supervisor_name', 'LIKE', "%$Supervisor%")
+                  ->Where('name', 'LIKE', "%$name%")
+                  ->get();
+                return view('admin.project_search',compact('file_all','files','user','file_unique'));
     }
 
     public function project(){
+
         $user = Auth::user();
+        $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
         $files = ProjectFiles::all();
-        return view('admin.MyProject',compact('user','files'));
+        return view('admin.MyProject',compact('user','files','file_unique'));
     }
 
     public function myfile_search(Request $request){
+                $file_all = ProjectFiles::all();
                 $user = Auth::User();
-                $query = $request->input('query');
-                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
-                return view('admin.myfile_search',compact('files','user'));
+                 $type = $request->input('type');
+                $Supervisor = $request->input('Supervisor');
+                $name = $request->input('name');
+                $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+                $files = ProjectFiles::where('type','LIKE',"%$type%")
+                  ->Where('supervisor_name', 'LIKE', "%$Supervisor%")
+                  ->Where('name', 'LIKE', "%$name%")
+                  ->get();
+                return view('admin.myfile_search',compact('files','user','file_all','file_unique'));
     }
 
     

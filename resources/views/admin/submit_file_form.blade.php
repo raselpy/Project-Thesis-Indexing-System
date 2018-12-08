@@ -122,7 +122,7 @@
                         <input type="text" name="name" class="form-control" placeholder="Project name">
                        </div>
                        <div class="form-group field">
-                        <label>RequiredTechnology</label>
+                        <label>Required Technology</label>
                        <input type="text" name="required_technology" class="form-control" placeholder="Enter required technology">
                    </div>
                       </div>
@@ -135,7 +135,7 @@
 
 
                    <div class="form-group">
-                          <label>Project Detail</label>
+                          <label>Abstract / Project summary</label>
                           <textarea class="form-control" placeholder="description" id="description" name="description">{{old('description')}}</textarea>
                    </div>
 

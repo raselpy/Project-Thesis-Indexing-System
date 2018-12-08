@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\ProjectFiles;
 use App\Idea;
+use DB;
 
 class StudentDashboardController extends Controller
 {
@@ -19,9 +20,10 @@ class StudentDashboardController extends Controller
 	}
 
 	public function project(){
+        $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
 		$user = Auth::user();
 		$files = ProjectFiles::all();
-		return view('student_dashboard.project',compact('user','files'));
+		return view('student_dashboard.project',compact('user','files','file_unique'));
 	}
 
 	 public function idea(){
@@ -31,10 +33,17 @@ class StudentDashboardController extends Controller
     }
 
     public function file_search(Request $request){
+                $file_all = ProjectFiles::all();
     	        $user = Auth::user();
-                $query = $request->input('query');
-                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
-         return view('student_dashboard.file_search',compact('files','query','user'));
+                $type = $request->input('type');
+                $Supervisor = $request->input('Supervisor');
+                $name = $request->input('name');
+                $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+                $files = ProjectFiles::where('type','LIKE',"%$type%")
+                  ->Where('supervisor_name', 'LIKE', "%$Supervisor%")
+                  ->Where('name', 'LIKE', "%$name%")
+                  ->get();
+         return view('student_dashboard.file_search',compact('file_all','files','user','file_unique'));
     }
 
     public function idea_search(Request $request){

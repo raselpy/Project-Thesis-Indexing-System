@@ -52,18 +52,7 @@
       </td>
       
     </tr>
-    @else
-                    <div class="col-lg-12 col-md-12">
-                        <div class="card h-100">
-                            <div class="single-post post-style-1">
-                                <div class="blog-info">
-                                    <h4 class="title">
-                                        <strong>Sorry, No Favorite Idea found :(</strong>
-                                    </h4>
-                                </div><!-- blog-info -->
-                            </div><!-- single-post -->
-                        </div><!-- card -->
-</div><!-- col-lg-4 col-md-6 -->
+   
     @endif
     @endforeach 
     @endforeach 

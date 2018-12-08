@@ -19,16 +19,22 @@ class ThesisController extends Controller
     {
         $files = ProjectFiles::paginate(8);
         $user = Auth::User();
-        // $files=DB::table('project_files')->get();
-        // dd($files);
-        return view('student.thesis',compact('files','user'));
+        $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+        return view('student.thesis',compact('files','user','file_unique'));
     }
 
     public function thesis_search(Request $request){
-                $user = Auth::User();
-                $query = $request->input('query');
-                $files = ProjectFiles::where('name','LIKE',"%$query%")->get();
-                return view('student.thesis_search',compact('files','user'));
+                $file_all = ProjectFiles::all();
+                $user = Auth::user();
+                $technology = $request->input('technology');
+                $Supervisor = $request->input('Supervisor');
+                $name = $request->input('name');
+                $file_unique = DB::table('project_files')->distinct()->select('supervisor_name')->get();
+                $files = ProjectFiles::where('required_technology','LIKE',"%$technology%")
+                  ->Where('supervisor_name', 'LIKE', "%$Supervisor%")
+                  ->Where('name', 'LIKE', "%$name%")
+                  ->get();
+                return view('student.thesis_search',compact('files','user','file_unique'));
     }
 
     public function detail($id){

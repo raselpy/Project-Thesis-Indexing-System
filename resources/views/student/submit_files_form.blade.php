@@ -122,7 +122,7 @@
 
 
                    <div class="form-group">
-                          <label>Project Detail</label>
+                          <label>Abstract / Project summary</label>
                           <textarea class="form-control" placeholder="description" id="description" name="description">{{old('description')}}</textarea>
                    </div>
 

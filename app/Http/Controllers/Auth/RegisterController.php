@@ -93,7 +93,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role' => 1,
+            'role' => $data['role'],
         ]);
 
         $verifyUser = VerifyUser::create([

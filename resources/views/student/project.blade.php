@@ -17,12 +17,25 @@
 @section('content')
 <div class="container" style="user-select: none;">
         <div >
-            <form class="ui form" method="GET" action="{{route('project_search')}}">
-              <div class="four fields">
-                <input class="field" style="margin-left: 800px;" value="{{ isset($query) ? $query : '' }}" name="query" type="text" placeholder="File search">
-                <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
-              </div>  
+              <form class="ui form ui tall  segment" method="GET" style="margin-bottom: 30px" action="{{route('project_search')}}">
+              <h4> <span class="ui dividing header "> Enter Necessary Info For Search </span></h4>
+              <div class="three fields ">
+
+                       <select name="Supervisor" style="margin-left: 40px; width: 200px" class="form-control">
+                        <option selected disabled>Select Supervisor</option>
+                            @foreach ($file_unique as $file)
+                              <option value="{{ $file->supervisor_name }}">{{ $file->supervisor_name}}</option>
+                            @endforeach
+                       </select>
+
+                       <input class="field" style="margin-left: 40px;width: 300px" value="{{ isset($technology) ? $technology : '' }}" name="technology" type="text" placeholder="Enter Technology">
+
+                       <input class="field" style="margin-left: 40px;width: 300px" value="{{ isset($name) ? $name : '' }}" name="name" type="text" placeholder="Project name">
+                       
+                      <button style="margin-left: 3px" class="src-btn" type="submit"><i class="search icon"></i></button>
+                   </div>  
             </form>
+
       </div>
         <div class="row justify-content-center">
             <div class="col-md-12">
